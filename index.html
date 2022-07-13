@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="header">
+            <h1>Library Project</h1>
+            <div class="buttonContainer">
+                <button id="addBook" type="button">Add Book</button>
+                <!-- <button>Clear All</button> -->
+            </div>
+    </div>
+
+    <div class="main">
+        <div class="cardsContainer">
+            <div class="card">
+                <div class="title">Title</div>
+                <div class="author">Author</div>
+                <div class="page">1/15</div>
+                <button class="read">Read</button>
+                <button class="delete">Delete</button>
+            </div>
+            <div class="card">
+                <div class="title">Title</div>
+                <div class="author">Author</div>
+                <div class="page">1/15</div>
+                <button class="read">Read</button>
+                <button class="delete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Random Footer Text</p>
+    </div>
+
+    <div class="overlay">
+        <div class="formContaienr">
+            <div id="formHeader">
+                <h3 id="closeBook">X</h3>
+                <h3 id="formTitle">Add Book Form</h3>
+            </div>
+            
+            <form action="#" method="" id="addBookForm">
+                <input type="text" name="bookTitle" id="bookTitle" placeholder="Title">
+                <input type="text" name="bookAuthor" id="bookAuthor" placeholder="Author">
+                <input type="text" name="bookPages" id="bookPages" placeholder="Pages">
+                <div class="Read">
+                    <label for="isRead">Have you read it?</label>
+                    <input type="checkbox" name="isRead" id="isRead" value="Yes">
+                </div>
+                <button type="submit" id="formSubmit">Add Book</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
