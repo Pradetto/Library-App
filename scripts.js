@@ -5,7 +5,6 @@ addBookButton.addEventListener('click', () => toggleOverlay())
 closeBookButton.addEventListener('click', () => toggleOverlay())
 
 
-
 function toggleOverlay() {
     let overlayDiv = document.querySelector(".overlay");
     if (overlayDiv.style.opacity === '0'){
@@ -30,21 +29,21 @@ function Book(title,author,pages,read,index) {
     this.index = index
 };
 
-let formSubmit = document.querySelector('#formSubmit')
+// Button to add form to library
+let formSubmit = document.querySelector('#formSubmit');
 formSubmit.addEventListener('click', () => {
     let form = document.querySelector('form');
-    addBookToLibrary(form)
+    addBookToLibrary(form);
     toggleOverlay();
     document.getElementById("addBookForm").reset();
 });
 
 
 function addBookToLibrary(form) {
-    let title = form.bookTitle.value;
-    let author = form.bookAuthor.value;
-    let pages = form.bookPages.value;
-    let read = form.isRead.checked;
-    console.log('this is read',read)
+    let title = form.bookTitle.value
+    let author = form.bookAuthor.value
+    let pages = form.bookPages.value
+    let read = form.isRead.checked
     if (read === true){
         read = 'Yes'
     } else{
@@ -52,14 +51,14 @@ function addBookToLibrary(form) {
     };
 
     let newBook = new Book(title,author,pages,read,myLibrary.length);
-    myLibrary.push(newBook)
-    display()
+    myLibrary.push(newBook);
+    display();
 };
 
 let clearCardsContainer = ()=>{
     let cardsContainer = document.querySelector('.cardsContainer')
     cardsContainer.innerHTML = ""
-}
+};
 
 function display(){
     clearCardsContainer()
@@ -79,7 +78,7 @@ myLibrary.forEach(function(book) {
     deleteButton.classList.add('delete')
     
     card.setAttribute('id',`${book.index}`)
-    title.textContent = `${book.titel}`
+    title.textContent = `${book.title}`
     author.textContent = `${book.author}`
     pages.textContent = `${book.pages}`
     read.textContent = `${book.read}`
@@ -90,7 +89,22 @@ myLibrary.forEach(function(book) {
     };
     deleteButton.textContent = `Delete`
 
+    deleteButton.addEventListener('click', () => {
+        myLibrary.splice(myLibrary.indexOf(book),1)
+        display()
+    });
 
+    read.addEventListener('click', () =>{
+        if (read.classList.contains('yesRead')){
+            read.classList.remove('yesRead')
+            read.classList.add('notRead')
+            read.textContent = 'No'
+        } else {
+            read.classList.remove('notRead')
+            read.classList.add('yesRead')
+            read.textContent = 'Yes'
+        }
+    })
 
     card.appendChild(title)
     card.appendChild(author)
@@ -101,4 +115,3 @@ myLibrary.forEach(function(book) {
     cardsContainer.appendChild(card)
     });
 };
-
